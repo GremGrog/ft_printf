@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_put_indents_unsigned.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 18:01:48 by qmebble           #+#    #+#             */
+/*   Updated: 2019/05/17 18:03:26 by qmebble          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void	if_not_zero_unsigned(int len)
@@ -72,7 +84,7 @@ void	if_minus_unsigned(t_pf *data)
 	ft_strcpy(g_buffer->str, g_buffer->final);
 }
 
-void		ft_put_indents_unsigned(t_pf *data)
+void	ft_put_indents_unsigned(t_pf *data)
 {
 	if (!data->indents)
 		return ;

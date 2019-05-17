@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ox.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:50:52 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 21:49:52 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void			convert_data_without_mod(va_list args, t_pf *data)
@@ -37,7 +49,8 @@ void			convert_data_ox(va_list args, t_pf *data)
 {
 	unsigned long long	value;
 
-	if (CHECK_BIT(data->modificators, 1) || CHECK_BIT(data->modificators, 2))
+	if (CHECK_BIT(data->modificators, 1) || CHECK_BIT(data->modificators, 2)
+		|| CHECK_BIT(data->modificators, 5))
 	{
 		value = (unsigned long long)va_arg(args, long long);
 		ft_itoa_base_ox_max(data, (unsigned long long)value);
@@ -57,7 +70,7 @@ void			ox_process(t_pf *data, va_list args)
 		data->base = 8;
 		convert_data_ox(args, data);
 		if (CHECK_BIT(data->flags, 2))
-			grid_o(data);
+			grid_o();
 	}
 	else
 	{
@@ -73,4 +86,5 @@ void			ox_process(t_pf *data, va_list args)
 	if (data->indents != 0)
 		fill_indents_ox(data);
 	ft_caps(data);
+	ft_put_color(data);
 }

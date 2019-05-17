@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_precision_flo.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:35:42 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:35:42 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void		round_up(t_pf *data, int i, int j)
@@ -55,7 +67,7 @@ void		round_up_ipart(int i, int j, t_pf *data)
 		if (data->precision <= 0)
 		{
 			if (g_buffer->str[i] == '.' && (g_ipart > 1) &&
-				(g_fpart >= 0.51 || g_fpart <= (-0.51)))
+				(g_fpart >= 0.51 || g_fpart <= (-0.5)))
 				g_buffer->final[j - 1]++;
 			if (!CHECK_BIT(data->flags, 2))
 			{

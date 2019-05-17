@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indents_ox.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:50:36 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:55:26 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void		fill_minus(t_pf *data)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -23,8 +35,8 @@ void		fill_minus(t_pf *data)
 
 void		fill_plus(t_pf *data)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	j = 0;
 	i = 0;
@@ -44,9 +56,8 @@ void		fill_plus(t_pf *data)
 
 void		fill_indents_grid_o(t_pf *data)
 {
-	int		i;
-	int		j;
-
+	int	i;
+	int	j;
 
 	g_buffer->final[0] = '0';
 	i = 1;
@@ -66,9 +77,8 @@ void		fill_indents_grid_o(t_pf *data)
 
 void		fill_indents_grid_x(t_pf *data)
 {
-	int		i;
-	int		j;
-
+	int	i;
+	int	j;
 
 	if (data->type == 'o')
 	{
@@ -89,7 +99,6 @@ void		fill_indents_grid_x(t_pf *data)
 	}
 	while (g_buffer->str[j] != '\0')
 		g_buffer->final[i++] = g_buffer->str[j++];
-	g_buffer->final[i] = '\0';
 	g_buffer->str_len = i;
 	ft_strcpy(g_buffer->str, g_buffer->final);
 	ft_bzero(g_buffer->final, g_buffer->buff_size + 1);
@@ -99,7 +108,7 @@ void		fill_indents_ox(t_pf *data)
 {
 	int		len;
 
-	len =  data->indents - g_buffer->str_len;
+	len = data->indents - g_buffer->str_len;
 	check_and_add(len);
 	if (data->indents < len)
 		return ;

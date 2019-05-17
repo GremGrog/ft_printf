@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_put_indents_pointer.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 18:01:32 by qmebble           #+#    #+#             */
+/*   Updated: 2019/05/17 20:08:34 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void	if_zero_pointer(int amount_indents)
@@ -47,9 +59,9 @@ void	if_not_minus_pointer(t_pf *data)
 
 void	if_minus_pointer(t_pf *data)
 {
-	unsigned int	i;
-	unsigned int	str_len;
-	int				amount_indents;
+	int		i;
+	int		str_len;
+	int		amount_indents;
 
 	amount_indents = g_buffer->str_len - data->indents;
 	if (amount_indents >= 0)

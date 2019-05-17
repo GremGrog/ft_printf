@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   char.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:36:27 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:36:27 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 int			fill_str_char(t_pf *data, int i)
@@ -60,4 +72,5 @@ void		char_process(t_pf *data, va_list args)
 		if (data->indents != 0)
 			set_indents_char(data, sym);
 	}
+	ft_put_color(data);
 }

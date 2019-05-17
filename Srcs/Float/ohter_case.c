@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ohter_case.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:36:02 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:36:02 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void				set_arr_to_null(char *arr)
@@ -60,8 +72,15 @@ void				other_case(char *y, short exp, short sign)
 	n = 52;
 	n = exp - n;
 	res = ft_binpow(2, n);
-	x = (char*)malloc(sizeof(char) * 200);
-	z = (char*)malloc(sizeof(char) * 200);
+	if (!(x = (char*)malloc(sizeof(char) * 200)))
+		return ;
+	if (!(z = (char*)malloc(sizeof(char) * 200)))
+	{
+		free(x);
+		free(z);
+		free(y);
+		return ;
+	}
 	set_arr_to_null(x);
 	set_arr_to_null(z);
 	number_to_arr(res, z);

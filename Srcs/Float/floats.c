@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   floats.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:35:49 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:40:42 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void				ft_copy_float(char *x, short sign)
@@ -38,11 +50,13 @@ void				get_float(char *y, short exp, short sign)
 	bow = (char *)malloc(sizeof(char) * 200);
 	z = (char *)malloc(sizeof(char) * 200);
 	x = malloc(sizeof(char) * 200);
+	if (!pow || !bow || !z || !x)
+		return ;
 	set_arr_to_null(bow);
 	set_arr_to_null(pow);
 	set_arr_to_null(z);
 	set_arr_to_null(x);
-	pow = get_five_power(exp, pow, bow);
+	pow = get_five_power(52, exp, pow, bow);
 	multiplication_long(pow, y, z);
 	div_l(z, n, x);
 	free(z);
@@ -59,7 +73,8 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 
 	i = 0;
 	a_pow = 4503599627370496;
-	arr = malloc(sizeof(char) * 200);
+	if (!(arr = malloc(sizeof(char) * 200)))
+		return ;
 	set_arr_to_null(arr);
 	number_to_arr(mant, arr);
 	while (a_pow > 0)
@@ -73,7 +88,6 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 		i++;
 		a_pow /= 10;
 	}
-	arr[i] = '\0';
 	if ((52 - exp) > 0)
 		get_float(arr, exp, sign);
 	else
@@ -96,7 +110,7 @@ void				get_mes(double flo)
 	get_mant_plus_pow(mant, exp, sign);
 }
 
-t_pf				*ft_floats(t_pf *data, va_list args)
+void				ft_floats(t_pf *data, va_list args)
 {
 	double			flo;
 
@@ -122,5 +136,5 @@ t_pf				*ft_floats(t_pf *data, va_list args)
 	set_precision_flo(data);
 	set_space_flo(data);
 	set_indents_flo(data);
-	return (data);
+	ft_put_color(data);
 }

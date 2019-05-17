@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dynamic_buffer.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 18:01:08 by qmebble           #+#    #+#             */
+/*   Updated: 2019/05/17 20:06:17 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void	make_new_buffer(void)
@@ -29,7 +41,7 @@ void	ft_copy_temp(char *temp_str, char *temp_final)
 	}
 }
 
-void	check_and_add(size_t size)
+void	check_and_add(int size)
 {
 	char	*temp_str;
 	char	*temp_final;

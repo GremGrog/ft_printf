@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   floats_manipulation.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:35:30 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:39:20 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void				multiplication_on_short(char *src, int num, char *dst)
@@ -28,29 +40,26 @@ void				multiplication_on_short(char *src, int num, char *dst)
 	}
 }
 
-char				*get_five_power(short exp, char *pow, char *bow)
+char				*get_five_power(int power, short exp, char *pow, char *bow)
 {
-	int				n;
-
-	n = 52;
-	n -= exp;
+	power -= exp;
 	pow[0] = 5;
-	if (!(n > 1))
+	if (!(power > 1))
 		return (pow);
-	while (n > 0)
+	while (power > 0)
 	{
 		multiplication_on_short(pow, 5, bow);
 		set_arr_to_null(pow);
-		n--;
-		if (n == 1)
+		power--;
+		if (power == 1)
 		{
 			free(pow);
 			return (bow);
 		}
 		multiplication_on_short(bow, 5, pow);
 		set_arr_to_null(bow);
-		n--;
-		if (n == 1)
+		power--;
+		if (power == 1)
 			break ;
 	}
 	free(bow);

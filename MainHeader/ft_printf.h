@@ -1,18 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 18:02:49 by qmebble           #+#    #+#             */
+/*   Updated: 2019/05/17 20:10:30 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h>
 # include "../libft/libft.h"
-# define TYPES "%UXcdfiopsux"
+# define TYPES "%Xcdfiopsux"
 # define D_TYPES "Xdioux"
 # define NUMBERS "0123456789"
 # define FLAGS " #+-0b"
 # define CHECK_BIT(var, position) (var & (1 << position)) ? 1 : 0
 # define PUT_BIT(var, position) (var |= (1 << position))
 # define DEL_BIT(var, position) (var &= ~(1 << position))
+# define NORMAL "\x1b[0m"
+# define BLACK "\x1b[30m"
+# define RED "\x1b[31m"
+# define GREEN "\x1b[32m"
+# define YELLOW "\x1b[33m"
+# define BLUE "\x1b[34m"
+# define PURPLE "\x1b[35m"
+# define CYAN "\x1b[36m"
+# define GREY "\x1b[37m"
 # define MAX_CHAR				127
 # define MAX_UNSIGNED_CHAR		255
 # define MAX_SHORT_INT			32767
@@ -36,17 +56,18 @@ typedef struct			s_pf
 	char				*str_before;
 	char				*str_middle;
 	char				*str_after;
+	char				colors;
 }						t_pf;
 
 typedef struct			s_buffer
 {
 	char				*str;
 	char				*final;
-	size_t				str_len;
-	size_t				before_len;
-	size_t				after_len;
-	unsigned int		buff_size;
-	unsigned int		overflow_counter;
+	int				    str_len;
+	int				    before_len;
+	int				    after_len;
+	int		            buff_size;
+	int		            overflow_counter;
 }						t_buffer;
 
 t_buffer				*g_buffer;
@@ -77,10 +98,11 @@ void					ft_put_indents_integer(t_pf *data);
 
 long					g_ipart;
 double					g_fpart;
-t_pf					*ft_floats(t_pf *data, va_list args);
+void					ft_floats(t_pf *data, va_list args);
 void					set_indents_flo(t_pf *data);
 void					multiplication_on_short(char *src, int num, char *dst);
-char					*get_five_power(short exp, char *pow, char *bow);
+char					*get_five_power(int power, short exp,
+										char *pow, char *bow);
 void					number_to_arr(unsigned long mant, char *arr);
 void					multiplication_loop(int j, char *x, char *y, char *z);
 void					multiplication_long(char *x, char *y, char *z);
@@ -105,9 +127,10 @@ void					ft_strrev(void);
 char					*ft_itoa_base(t_pf *data, long long int num);
 t_pf					*assemble_string(t_pf *data);
 void					make_new_buffer(void);
-void					check_and_add(size_t size);
+void					check_and_add(int size);
 void					free_buffer(void);
 void					ft_put_str(t_pf *data);
+void					ft_put_color(t_pf *data);
 
 /*
 **						Parsing
@@ -131,7 +154,7 @@ t_pf					*put_data(t_pf *data, va_list args);
 
 void					ox_process(t_pf *data, va_list args);
 void					grid_x(t_pf *data);
-void					grid_o(t_pf *data);
+void					grid_o(void);
 void					ft_caps(t_pf *list);
 void					fill_plus(t_pf *data);
 void					fill_indents_ox(t_pf *data);
@@ -139,6 +162,7 @@ void					fill_precision_ox(t_pf *data);
 void					ft_itoa_base_ox(t_pf *data, long long int num);
 void					ft_itoa_base_ox_max(t_pf *data,
 						unsigned long long int num);
+void					ft_fill_zero(t_pf *data);
 
 /*
 **						Pointer
@@ -148,7 +172,7 @@ unsigned long long int	g_pointer;
 void					ft_pointer(t_pf *data, va_list args);
 void					ft_itoa_pointer(unsigned long long int num);
 void					ft_put_precision_pointer(t_pf *data);
-void					ft_put_grid_pointer(t_pf *data);
+void					ft_put_grid_pointer(void);
 void					ft_put_indents_pointer(t_pf *data);
 
 /*

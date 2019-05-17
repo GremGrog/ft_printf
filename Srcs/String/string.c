@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:53:23 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/17 17:53:23 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 int			fill_str(t_pf *data, int i)
@@ -49,8 +61,7 @@ void		set_indents_str(t_pf *data)
 
 void		set_precision_str(t_pf *data)
 {
-	int		i;
-
+	int	i;
 
 	i = 0;
 	while (data->precision > 0 && g_buffer->str[i] != '\0')
@@ -84,4 +95,5 @@ void		string_process(t_pf *data, va_list args)
 		set_precision_str(data);
 	if (data->indents != 0)
 		set_indents_str(data);
+	ft_put_color(data);
 }

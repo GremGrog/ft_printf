@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_put_precision_pointer.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 18:01:34 by qmebble           #+#    #+#             */
+/*   Updated: 2019/05/17 18:01:35 by qmebble          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
 
 void	ft_put_precision_pointer(t_pf *data)
@@ -14,11 +26,10 @@ void	ft_put_precision_pointer(t_pf *data)
 		g_buffer->str_len = 0;
 		return ;
 	}
-	data->indents_symb = ' ';
 	len = g_buffer->str_len - data->precision;
 	if (len >= 0)
 		return ;
-	check_and_add(len * (-1));
+	check_and_add(-len);
 	i = -1;
 	while (++i < (-len))
 		g_buffer->final[i] = '0';

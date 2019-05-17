@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 18:01:11 by qmebble           #+#    #+#             */
+/*   Updated: 2019/05/17 22:28:39 by fmasha-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../MainHeader/ft_printf.h"
-#include <limits.h>
+
 int			ft_printf(const char *format, ...)
 {
 	int		i;
@@ -24,18 +36,10 @@ int			ft_printf(const char *format, ...)
 	va_end(args);
 	return (return_value);
 }
-//
-//////
-//int main()
-//{
-//	double		nb;
-//	nb = -12547.58;
-//
-//
-//	ft_printf("size + minus + plus + prec + hash:%-#+5.0f\n", nb);
-//	printf("______________________________________________________________________________\n");
-//
-//	dprintf(2, "size + minus + plus + prec + hash:%-#+5.0f\n", nb);
-//}
-////
 
+int main()
+{
+    // long double s = 60.0;
+    ft_printf("%Lf\n", (long double)0.9);
+    printf("%Lf\n", (long double)0.9);
+} 

@@ -13,8 +13,6 @@ SRCF = Srcs/HighestFunctions/*.c \
 		Srcs/DI/*.c \
 		Srcs/Unsigned/*.c \
 		Srcs/Float/*.c
-		#Srcs/Binary/*.c \
-
 
 SRCFLIB = libft/ft_*.c
 
@@ -27,20 +25,21 @@ LIB_INCLUDE = -I libft/libft.h
 all: $(NAME)
 
 $(NAME):
-	gcc -g -c $(SRCF) $(SRCFLIB) $(INCLUDE) $(LIB_INCLUDE)
+	gcc -g $(FLAGS) -c $(SRCF) $(SRCFLIB) $(INCLUDE) $(LIB_INCLUDE)
 	mkdir obj
 	mv *.o obj
 	ar rc $(NAME) $(OBJF)
 	ranlib $(NAME)
-	gcc $(NAME)
+	gcc $(FLAGS) $(NAME)
 
 clean:
-	/bin/rm -f $(OBJF)
+	/bin/rm -rf obj/*
+	/bin/rm -f libft/*.o
 
 fclean: clean
 	/bin/rm -f $(NAME)
 	/bin/rm -rf obj
 	/bin/rm -f a.out
-	/bin/rm -f libft/*.o
+	/bin/rm -f libft/libft.a
 
 re: fclean all
