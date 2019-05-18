@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:49 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 17:40:42 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/18 19:12:28 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,28 @@ void				ft_copy_float(char *x, short sign)
 {
 	int				i;
 	int				j;
+	int				o;
+	int				l;
+	int				dot;
 
+	dot = 0;
 	j = 0;
-	g_ipart = num_len(g_ipart);
 	i = 0;
-	while (x[i] + '0' != '.')
+	o = 398;
+	while (x[i] == 0)
 		i++;
-	check_and_add(g_buffer->str_len + i);
+	while (x[o] == 0)
+		o--;
+	if (i == 1)
+		i--;
+	l = o - i;
+	check_and_add(g_buffer->str_len + l);
 	if (sign == 1)
-	{
-		g_buffer->str[j] = '-';
-		j = 1;
-		g_ipart--;
-	}
-	i += g_ipart;
-	while (i >= 0)
-		g_buffer->str[j++] = x[i--] + '0';
-	g_buffer->str[j] = '\0';
+		g_buffer->str[j++] = '-';
+	while (l >= 0)
+		g_buffer->str[j++] = x[l--] + '0';
 	g_buffer->str_len = j;
+	get_ipart();
 	free(x);
 }
 
@@ -46,10 +50,10 @@ void				get_float(char *y, short exp, short sign)
 	char			*x;
 
 	n = 52 - exp;
-	pow = (char *)malloc(sizeof(char) * 200);
-	bow = (char *)malloc(sizeof(char) * 200);
-	z = (char *)malloc(sizeof(char) * 200);
-	x = malloc(sizeof(char) * 200);
+	pow = (char *)malloc(sizeof(char) * 399);
+	bow = (char *)malloc(sizeof(char) * 399);
+	z = (char *)malloc(sizeof(char) * 399);
+	x = malloc(sizeof(char) * 399);
 	if (!pow || !bow || !z || !x)
 		return ;
 	set_arr_to_null(bow);
@@ -73,7 +77,7 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 
 	i = 0;
 	a_pow = 4503599627370496;
-	if (!(arr = malloc(sizeof(char) * 200)))
+	if (!(arr = malloc(sizeof(char) * 399)))
 		return ;
 	set_arr_to_null(arr);
 	number_to_arr(mant, arr);
@@ -96,12 +100,12 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 
 void				get_mes(double flo)
 {
-	unsigned long	*ptr;
-	short			sign;
-	short			exp;
-	long long		mant;
+	unsigned long long	*ptr;
+	short				sign;
+	short				exp;
+	unsigned long long	mant;
 
-	ptr = (unsigned long*)&flo;
+	ptr = (unsigned long long *)&flo;
 	sign = (*ptr) >> 63;
 	exp = ((*ptr) >> 52) - 1023;
 	exp <<= 5;

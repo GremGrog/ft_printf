@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:02:49 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/17 20:10:30 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/18 20:05:18 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ typedef struct			s_buffer
 {
 	char				*str;
 	char				*final;
-	int				    str_len;
-	int				    before_len;
-	int				    after_len;
-	int		            buff_size;
-	int		            overflow_counter;
+	int					str_len;
+	int					before_len;
+	int					after_len;
+	int					buff_size;
+	int					overflow_counter;
 }						t_buffer;
 
 t_buffer				*g_buffer;
@@ -116,6 +116,9 @@ void					set_plus_flo(t_pf *data);
 void					ipart_to_str(void);
 void					long_double_work(t_pf *data, va_list args);
 void					validity(double flo);
+void					ft_copy_float(char *x, short sign);
+void					get_ipart();
+char					*get_two_power(int power, char *pow, char *bow);
 /*
 **						HighestFunctions
 */

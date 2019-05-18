@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:01:08 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/17 20:06:17 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/18 20:04:04 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	make_new_buffer(void)
 {
 	g_buffer = (t_buffer *)malloc(sizeof(t_buffer));
 	g_buffer->buff_size = 50;
-	g_buffer->str = (char *)malloc(sizeof(char) * (g_buffer->buff_size + 1));
-	g_buffer->final = (char *)malloc(sizeof(char) * (g_buffer->buff_size + 1));
-	ft_bzero(g_buffer->str, g_buffer->buff_size + 1);
-	ft_bzero(g_buffer->final, g_buffer->buff_size + 1);
+	g_buffer->str = (char *)malloc(sizeof(char) * (g_buffer->buff_size));
+	g_buffer->final = (char *)malloc(sizeof(char) * (g_buffer->buff_size));
+	ft_bzero(g_buffer->str, g_buffer->buff_size);
+	ft_bzero(g_buffer->final, g_buffer->buff_size);
 	g_buffer->str_len = 0;
 	g_buffer->before_len = 0;
 	g_buffer->after_len = 0;
@@ -39,6 +39,16 @@ void	ft_copy_temp(char *temp_str, char *temp_final)
 		temp_final[i] = '\0';
 		i++;
 	}
+}
+
+void    copy_free(char *temp_str, char *temp_final)
+{
+    ft_bzero(g_buffer->str, g_buffer->buff_size);
+	ft_bzero(g_buffer->final, g_buffer->buff_size);
+	ft_strcpy(g_buffer->str, temp_str);
+	ft_strcpy(g_buffer->final, temp_final);
+    free(temp_str);
+    free(temp_final);
 }
 
 void	check_and_add(int size)
@@ -64,10 +74,7 @@ void	check_and_add(int size)
 	g_buffer->final = (char*)malloc(sizeof(char) * g_buffer->buff_size);
 	if (!g_buffer->str || !g_buffer->final)
 		return ;
-	ft_bzero(g_buffer->str, g_buffer->buff_size);
-	ft_bzero(g_buffer->final, g_buffer->buff_size);
-	ft_strcpy(g_buffer->str, temp_str);
-	ft_strcpy(g_buffer->final, temp_final);
+    copy_free(temp_str, temp_final);
 }
 
 void	free_buffer(void)

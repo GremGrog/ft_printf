@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:36:02 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 17:36:02 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/18 19:01:27 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,77 +17,86 @@ void				set_arr_to_null(char *arr)
 	int				i;
 
 	i = 0;
-	while (i < 200)
+	while (i < 399)
 	{
 		arr[i] = 0;
 		i++;
 	}
 }
 
-int					ft_binpow(long a, long n)
-{
-	long			res;
+// int					ft_binpow(long a, long n)
+// {
+// 	long			res;
 
-	res = 1;
-	while (n)
-	{
-		if (n & 1)
-			res *= a;
-		a *= a;
-		n >>= 1;
-	}
-	return (res);
-}
+// 	res = 1;
+// 	while (n)
+// 	{
+// 		if (n & 1)
+// 			res *= a;
+// 		a *= a;
+// 		n >>= 1;
+// 	}
+// 	return (res);
+// }
 
-void				ft_copy_float_other(char *x, short sign)
-{
-	int				i;
-	int				j;
+// void				ft_copy_float(char *x, short sign)
+// {
+// 	int				i;
+// 	int				j;
+// 	int				o;
+// 	int				l;
 
-	j = 0;
-	i = -1;
-	g_ipart = num_len(g_ipart);
-	if (sign == 1)
-	{
-		g_buffer->str[j] = '-';
-		j = 1;
-		g_ipart--;
-	}
-	i += g_ipart;
-	check_and_add(g_buffer->str_len + i);
-	while (i >= 0)
-		g_buffer->str[j++] = x[i--] + '0';
-	g_buffer->str[j] = '.';
-	g_buffer->str_len = j;
-	free(x);
-}
+// 	j = 0;
+// 	i = 0;
+// 	o = 199;
+// 	while (x[i] == 0)
+// 		i++;
+// 	while (x[o] == 0)
+// 		o--;
+// 	l = o - i;
+// 	check_and_add(g_buffer->str_len + l);
+// 	if (sign == 1)
+// 	{
+// 		g_buffer->str[j] = '-';
+// 		j = 1;
+// 	}
+// 	while (l >= 0)
+// 		g_buffer->str[j++] = x[l--] + '0';
+// 	g_buffer->str_len = l;
+// 	free(x);
+// }
 
 void				other_case(char *y, short exp, short sign)
 {
 	int				n;
-	long			res;
 	char			*x;
 	char			*z;
-
-	n = 52;
-	n = exp - n;
-	res = ft_binpow(2, n);
-	if (!(x = (char*)malloc(sizeof(char) * 200)))
+    char			*pow;
+	char			*bow;
+	
+    
+	n = exp - 52;
+	if (!(x = (char*)malloc(sizeof(char) * 399)))
 		return ;
-	if (!(z = (char*)malloc(sizeof(char) * 200)))
+	if (!(z = (char*)malloc(sizeof(char) * 399)))
 	{
 		free(x);
 		free(z);
 		free(y);
 		return ;
 	}
+	pow = (char *)malloc(sizeof(char) * 399);
+	bow = (char *)malloc(sizeof(char) * 399);
 	set_arr_to_null(x);
 	set_arr_to_null(z);
-	number_to_arr(res, z);
-	multiplication_long(y, z, x);
+	set_arr_to_null(pow);
+	set_arr_to_null(bow);
+	pow = get_two_power(n, pow, bow);
+	multiplication_long(y, pow, x);
 	free(z);
 	free(y);
-	ft_copy_float_other(x, sign);
+	free(pow);
+	ft_copy_float(x, sign);
 }
 
 void				validity(double flo)

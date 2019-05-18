@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:30 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 17:39:20 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/18 19:02:12 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				multiplication_on_short(char *src, int num, char *dst)
 	int				d;
 
 	i = 0;
-	while (i < 200)
+	while (i < 399)
 	{
 		temp = src[i] * num;
 		if (temp >= 10)
@@ -66,13 +66,39 @@ char				*get_five_power(int power, short exp, char *pow, char *bow)
 	return (pow);
 }
 
+char				*get_two_power(int power, char *pow, char *bow)
+{
+	
+	pow[0] = 2;
+	if (!(power > 1))
+		return (pow);
+	while (power > 0)
+	{
+		multiplication_on_short(pow, 2, bow);
+		set_arr_to_null(pow);
+		power--;
+		if (power == 1)
+		{
+			free(pow);
+			return (bow);
+		}
+		multiplication_on_short(bow, 2, pow);
+		set_arr_to_null(bow);
+		power--;
+		if (power == 1)
+			break ;
+	}
+	free(bow);
+	return (pow);
+}
+
 void				multiplication_loop(int j, char *x, char *y, char *z)
 {
 	int				temp;
 	int				i;
 
 	i = 0;
-	while (i < 200 && (i + j) < 200)
+	while (i < 399 && (i + j) < 399)
 	{
 		temp = z[i + j] + (x[i] * y[j]);
 		if (temp >= 10)
@@ -97,7 +123,7 @@ void				multiplication_long(char *x, char *y, char *z)
 	int				j;
 
 	j = 0;
-	while (j < 200)
+	while (j < 399)
 	{
 		multiplication_loop(j, x, y, z);
 		j++;
@@ -124,7 +150,7 @@ void				div_l(char *z, int n, char *y)
 		if (n == 0)
 			y[j++] = -2;
 	}
-	i = 199;
+	i = 398;
 	while (z[i] == 0)
 		i--;
 	temp = i - temp + 1;
