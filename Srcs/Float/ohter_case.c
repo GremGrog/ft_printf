@@ -6,18 +6,18 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:36:02 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/18 19:01:27 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/19 15:10:01 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../MainHeader/ft_printf.h"
 
-void				set_arr_to_null(char *arr)
+void				set_arr_to_null(char *arr, int size)
 {
 	int				i;
 
 	i = 0;
-	while (i < 399)
+	while (i < size)
 	{
 		arr[i] = 0;
 		i++;
@@ -87,10 +87,10 @@ void				other_case(char *y, short exp, short sign)
 	}
 	pow = (char *)malloc(sizeof(char) * 399);
 	bow = (char *)malloc(sizeof(char) * 399);
-	set_arr_to_null(x);
-	set_arr_to_null(z);
-	set_arr_to_null(pow);
-	set_arr_to_null(bow);
+	set_arr_to_null(x, 400);
+	set_arr_to_null(z, 400);
+	set_arr_to_null(pow, 400);
+	set_arr_to_null(bow, 400);
 	pow = get_two_power(n, pow, bow);
 	multiplication_long(y, pow, x);
 	free(z);

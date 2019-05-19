@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/fmasha-h/git/printf/MainHeader/ft_printf.h
+unistd.h
+-
+stdlib.h
+-
+stdarg.h
+-
+../libft/libft.h
+/Users/fmasha-h/git/printf/libft/libft.h
+
+/Users/fmasha-h/git/printf/Srcs/Float/set_precision_flo.c
+../../MainHeader/ft_printf.h
+/Users/fmasha-h/git/printf/MainHeader/ft_printf.h
+
+/Users/fmasha-h/git/printf/Srcs/HighestFunctions/ft_printf.c
+../../MainHeader/ft_printf.h
+/Users/fmasha-h/git/printf/MainHeader/ft_printf.h
+
+/Users/fmasha-h/git/printf/libft/libft.h
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+unistd.h
+-
+

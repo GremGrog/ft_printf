@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:42 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 17:35:42 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/19 20:21:57 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		copy_flo(t_pf *data, int i, int j)
 {
 	while (data->precision > 0 && g_buffer->str[i] != '\0')
 	{
-		if (data->precision == 1 && g_buffer->str[i + 1] >= '5')
+		if (data->precision == 1 && (g_buffer->str[i + 2] != '\0' && g_buffer->str[i + 1] >= '5' ))
 			g_buffer->final[j] = g_buffer->str[i]++;
 		g_buffer->final[j++] = g_buffer->str[i++];
 		data->precision--;
@@ -76,6 +76,8 @@ void		round_up_ipart(int i, int j, t_pf *data)
 			}
 		}
 	}
+	g_buffer->str_len = i;
+	check_and_add(g_buffer->str_len + data->precision);
 	if (g_buffer->str[i + data->precision] == '9')
 		round_up(data, i, j);
 	else

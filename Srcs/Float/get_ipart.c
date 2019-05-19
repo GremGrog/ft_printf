@@ -15,10 +15,8 @@
 void    get_ipart()
 {
     int i;
-    int dot;
 
     i = 0;
-    dot = 0;
     while (g_buffer->str[i] != '.' && g_buffer->str[i] != '\0')
         i++;
     if (g_buffer->str[i] != '.')

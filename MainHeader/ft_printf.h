@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:02:49 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/18 20:05:18 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/19 17:42:47 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void					number_to_arr(unsigned long mant, char *arr);
 void					multiplication_loop(int j, char *x, char *y, char *z);
 void					multiplication_long(char *x, char *y, char *z);
 void					div_l(char *z, int n, char *y);
-void					set_arr_to_null(char *arr);
+void					set_arr_to_null(char *arr, int size);
 void					get_mes(double flo);
 void					other_case(char *y, short exp, short sign);
 void					set_precision_flo(t_pf *data);
@@ -119,6 +119,10 @@ void					validity(double flo);
 void					ft_copy_float(char *x, short sign);
 void					get_ipart();
 char					*get_two_power(int power, char *pow, char *bow);
+char					*get_two_power_ld(int power, char *pow, char *bow);
+char					*get_five_power_ld(int power, short exp, char *pow, char *bow);
+void					multiplication_long_ld(char *x, char *y, char *z);
+void					div_ld(char *z, int n, char *y);
 /*
 **						HighestFunctions
 */

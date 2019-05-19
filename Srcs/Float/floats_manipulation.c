@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:30 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/18 19:02:12 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/19 15:08:24 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char				*get_five_power(int power, short exp, char *pow, char *bow)
 	while (power > 0)
 	{
 		multiplication_on_short(pow, 5, bow);
-		set_arr_to_null(pow);
+		set_arr_to_null(pow, 399);
 		power--;
 		if (power == 1)
 		{
@@ -57,7 +57,7 @@ char				*get_five_power(int power, short exp, char *pow, char *bow)
 			return (bow);
 		}
 		multiplication_on_short(bow, 5, pow);
-		set_arr_to_null(bow);
+		set_arr_to_null(bow, 399);
 		power--;
 		if (power == 1)
 			break ;
@@ -75,7 +75,7 @@ char				*get_two_power(int power, char *pow, char *bow)
 	while (power > 0)
 	{
 		multiplication_on_short(pow, 2, bow);
-		set_arr_to_null(pow);
+		set_arr_to_null(pow, 399);
 		power--;
 		if (power == 1)
 		{
@@ -83,7 +83,7 @@ char				*get_two_power(int power, char *pow, char *bow)
 			return (bow);
 		}
 		multiplication_on_short(bow, 2, pow);
-		set_arr_to_null(bow);
+		set_arr_to_null(bow, 399);
 		power--;
 		if (power == 1)
 			break ;

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:49 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/18 19:12:28 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/19 18:10:58 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void				ft_copy_float(char *x, short sign)
 	int				j;
 	int				o;
 	int				l;
-	int				dot;
 
-	dot = 0;
 	j = 0;
 	i = 0;
 	o = 398;
@@ -56,10 +54,10 @@ void				get_float(char *y, short exp, short sign)
 	x = malloc(sizeof(char) * 399);
 	if (!pow || !bow || !z || !x)
 		return ;
-	set_arr_to_null(bow);
-	set_arr_to_null(pow);
-	set_arr_to_null(z);
-	set_arr_to_null(x);
+	set_arr_to_null(bow, 400);
+	set_arr_to_null(pow, 400);
+	set_arr_to_null(z, 400);
+	set_arr_to_null(x, 400);
 	pow = get_five_power(52, exp, pow, bow);
 	multiplication_long(pow, y, z);
 	div_l(z, n, x);
@@ -79,7 +77,7 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 	a_pow = 4503599627370496;
 	if (!(arr = malloc(sizeof(char) * 399)))
 		return ;
-	set_arr_to_null(arr);
+	set_arr_to_null(arr, 400);
 	number_to_arr(mant, arr);
 	while (a_pow > 0)
 	{
