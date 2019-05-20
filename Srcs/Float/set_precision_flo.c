@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:42 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/19 20:21:57 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:48:12 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void		copy_flo(t_pf *data, int i, int j)
 {
 	while (data->precision > 0 && g_buffer->str[i] != '\0')
 	{
-		if (data->precision == 1 && (g_buffer->str[i + 2] != '\0' && g_buffer->str[i + 1] >= '5' ))
+		if (data->precision == 1 && (g_buffer->str[i + 2] != '\0'
+			&& g_buffer->str[i + 1] >= '5'))
 			g_buffer->final[j] = g_buffer->str[i]++;
 		g_buffer->final[j++] = g_buffer->str[i++];
 		data->precision--;
@@ -61,6 +62,7 @@ void		copy_flo(t_pf *data, int i, int j)
 
 void		round_up_ipart(int i, int j, t_pf *data)
 {
+	g_buffer->final[j++] = g_buffer->str[i++];
 	while (g_buffer->str[i - 1] != '.')
 	{
 		g_buffer->final[j++] = g_buffer->str[i++];
@@ -95,5 +97,5 @@ void		set_precision_flo(t_pf *data)
 	j = 0;
 	round_up_ipart(i, j, data);
 	ft_strcpy(g_buffer->str, g_buffer->final);
-	ft_bzero(g_buffer->final, g_buffer->buff_size + 1);
+	ft_bzero(g_buffer->final, g_buffer->buff_size);
 }

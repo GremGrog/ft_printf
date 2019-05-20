@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:01:08 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/18 20:04:04 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:34:56 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	ft_copy_temp(char *temp_str, char *temp_final)
 	}
 }
 
-void    copy_free(char *temp_str, char *temp_final)
+void	copy_free(char *temp_str, char *temp_final)
 {
-    ft_bzero(g_buffer->str, g_buffer->buff_size);
+	ft_bzero(g_buffer->str, g_buffer->buff_size);
 	ft_bzero(g_buffer->final, g_buffer->buff_size);
 	ft_strcpy(g_buffer->str, temp_str);
 	ft_strcpy(g_buffer->final, temp_final);
-    free(temp_str);
-    free(temp_final);
+	free(temp_str);
+	free(temp_final);
 }
 
 void	check_and_add(int size)
@@ -74,7 +74,7 @@ void	check_and_add(int size)
 	g_buffer->final = (char*)malloc(sizeof(char) * g_buffer->buff_size);
 	if (!g_buffer->str || !g_buffer->final)
 		return ;
-    copy_free(temp_str, temp_final);
+	copy_free(temp_str, temp_final);
 }
 
 void	free_buffer(void)

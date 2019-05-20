@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:01:11 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/19 20:27:26 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:10:59 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,7 @@ int			ft_printf(const char *format, ...)
 
 int main()
 {
-	double f;
-
-	f = 4.155;
-	ft_printf("m%.2f\n", f);
-	dprintf(2, "s%.2f\n", f);
-	f = 4.1515;
-	ft_printf("m%.2f\n", f);
-	dprintf(2, "s%.2f\n", f);
-	f = 4.12501;
-	ft_printf("m%.2f\n", f);
-	dprintf(2, "s%.2f\n", f);
+	double f = 0.78;
+	printf("%f\n", f);
+	ft_printf("%f\n", f);
 }

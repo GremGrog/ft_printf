@@ -4,33 +4,27 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCF = Srcs/HighestFunctions/*.c \
 		Srcs/HighestFunctions/Parsing/*.c \
-		Srcs/HighestFunctions/*.c \
-		Srcs/HighestFunctions/Parsing/*.c \
 		Srcs/Char/*.c \
 		Srcs/String/*.c \
 		Srcs/Pointer/*.c \
 		Srcs/OxX/*.c \
 		Srcs/DI/*.c \
 		Srcs/Unsigned/*.c \
-		Srcs/Float/*.c
-
-SRCFLIB = libft/ft_*.c
+		Srcs/Float/*.c \
+		libft/ft_*.c
 
 OBJF = obj/*.o
 
-INCLUDE = -I MainHeader/ft_printf.h
-
-LIB_INCLUDE = -I libft/libft.h
+INCLUDE = -I MainHeader/ft_printf.h -I libft/libft.h
 
 all: $(NAME)
 
 $(NAME):
-	gcc -g $(FLAGS) -c $(SRCF) $(SRCFLIB) $(INCLUDE) $(LIB_INCLUDE)
+	gcc -g $(FLAGS) -c $(SRCF) $(INCLUDE)
 	mkdir obj
 	mv *.o obj
 	ar rc $(NAME) $(OBJF)
 	ranlib $(NAME)
-	gcc $(FLAGS) $(NAME)
 
 clean:
 	/bin/rm -rf obj/*

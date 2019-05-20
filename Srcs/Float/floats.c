@@ -6,38 +6,11 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:49 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/19 18:10:58 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:04:52 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../MainHeader/ft_printf.h"
-
-void				ft_copy_float(char *x, short sign)
-{
-	int				i;
-	int				j;
-	int				o;
-	int				l;
-
-	j = 0;
-	i = 0;
-	o = 398;
-	while (x[i] == 0)
-		i++;
-	while (x[o] == 0)
-		o--;
-	if (i == 1)
-		i--;
-	l = o - i;
-	check_and_add(g_buffer->str_len + l);
-	if (sign == 1)
-		g_buffer->str[j++] = '-';
-	while (l >= 0)
-		g_buffer->str[j++] = x[l--] + '0';
-	g_buffer->str_len = j;
-	get_ipart();
-	free(x);
-}
 
 void				get_float(char *y, short exp, short sign)
 {
@@ -54,13 +27,13 @@ void				get_float(char *y, short exp, short sign)
 	x = malloc(sizeof(char) * 399);
 	if (!pow || !bow || !z || !x)
 		return ;
-	set_arr_to_null(bow, 400);
-	set_arr_to_null(pow, 400);
-	set_arr_to_null(z, 400);
-	set_arr_to_null(x, 400);
+	set_arr_to_null(bow, 399);
+	set_arr_to_null(pow, 399);
+	set_arr_to_null(z, 399);
+	set_arr_to_null(x, 399);
 	pow = get_five_power(52, exp, pow, bow);
 	multiplication_long(pow, y, z);
-	div_l(z, n, x);
+	long_arithmetic_div_d(z, n, x);
 	free(z);
 	free(pow);
 	free(y);
@@ -77,7 +50,7 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 	a_pow = 4503599627370496;
 	if (!(arr = malloc(sizeof(char) * 399)))
 		return ;
-	set_arr_to_null(arr, 400);
+	set_arr_to_null(arr, 399);
 	number_to_arr(mant, arr);
 	while (a_pow > 0)
 	{
@@ -93,7 +66,7 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 	if ((52 - exp) > 0)
 		get_float(arr, exp, sign);
 	else
-		other_case(arr, exp, sign);
+		other_case_double(arr, exp, sign);
 }
 
 void				get_mes(double flo)

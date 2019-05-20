@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:43:17 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 21:45:28 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:02:34 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		copy_str_ox(t_pf *data, int i, int j)
 void		fill_precision_grid(t_pf *data)
 {
 	int		i;
-    int     j;
+	int		j;
 
 	if (data->type != 'o')
 	{
@@ -44,7 +44,7 @@ void		fill_precision_grid(t_pf *data)
 		g_buffer->final[0] = '0';
 		i = 1;
 	}
-    j = i;
+	j = i;
 	copy_str_ox(data, i, j);
 }
 
@@ -92,7 +92,7 @@ void		fill_precision_ox(t_pf *data)
 	if (!(data->precision > 0))
 		val_precision(data);
 	len = g_buffer->str_len - data->precision;
-    len *= -1;
+	len *= -1;
 	if (len >= data->precision)
 		return ;
 	check_and_add(len);

@@ -58,7 +58,7 @@ set (SOURCES
 		Srcs/Unsigned/num_len_unsigned.c
 		Srcs/Unsigned/ft_itoa_u_bin.c
 		Srcs/Float/floats.c
-		Srcs/Float/floats_manipulation.c
+		Srcs/Float/long_arithmetic_operations_for_double.c
 		Srcs/Float/set_precision_flo.c
 		Srcs/Float/num_to_arr.c
 		libft/ft_abs.c
@@ -127,15 +127,15 @@ set (SOURCES
 		Srcs/Float/indents_flo.c
 		Srcs/OxX/itoa_u.c
 		Srcs/Float/set_precision_flo.c
-		Srcs/Float/floats_manipulation.c
-		Srcs/Float/ohter_case.c
+		Srcs/Float/long_arithmetic_operations_for_double.c
+		Srcs/Float/other_case_double.c
 		Srcs/Float/set_space_flo.c
 		Srcs/Float/set_plus_flo.c
 		Srcs/Float/ipart_to_str.c
-		Srcs/Float/long_d.c
+		Srcs/Float/long_double.c
 		Srcs/Float/get_ipart.c
 		Srcs/HighestFunctions/ft_put_color.c
 		Srcs/OxX/fill_zero_ox.c
-        Srcs/Float/long_double_manipulation.c)
+		Srcs/Float/long_arithmetic_operations_for_longdouble.c Srcs/Float/malloc_protection_funk.c Srcs/Float/copy_float.c Srcs/Float/long_arithmetic_divison.c)
 
 add_executable(${PROJECT} ${SOURCES} ${HEADERS})

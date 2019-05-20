@@ -56,7 +56,7 @@ void		set_indents_str(t_pf *data)
 	g_buffer->final[i++] = '\0';
 	g_buffer->str_len = i - 1;
 	ft_strcpy(g_buffer->str, g_buffer->final);
-	ft_bzero(g_buffer->final, g_buffer->buff_size + 1);
+	ft_bzero(g_buffer->final, g_buffer->buff_size);
 }
 
 void		set_precision_str(t_pf *data)
@@ -73,7 +73,7 @@ void		set_precision_str(t_pf *data)
 	g_buffer->final[i] = '\0';
 	g_buffer->str_len = i;
 	ft_strcpy(g_buffer->str, g_buffer->final);
-	ft_bzero(g_buffer->final, g_buffer->buff_size + 1);
+	ft_bzero(g_buffer->final, g_buffer->buff_size);
 }
 
 void		string_process(t_pf *data, va_list args)
