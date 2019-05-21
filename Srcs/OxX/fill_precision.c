@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:43:17 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/20 18:02:34 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 16:27:29 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		val_precision(t_pf *data)
 		&& g_buffer->str[0] == '0')
 		return ;
 	if ((data->type != 'o' && g_buffer->str[0] == '0'
-	&& g_buffer->str[1] != 'x')
+	&& g_buffer->str[1] != 'x' && g_buffer->str[1] != 'X')
 		|| (data->type == 'o' && data->precision == -1
 			&& g_buffer->str[0] == '0')
 		|| g_buffer->str[0] == '\0')

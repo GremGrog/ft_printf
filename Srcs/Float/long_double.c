@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:21 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/20 16:06:46 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 18:35:33 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,12 @@ void				long_double_work(t_pf *data, va_list args)
 		fl *= (-1);
 	g_ipart = (__int128)fl;
 	exp = ((*ptr) >> 64) - 16383;
+	if (exp == -16382)
+	{
+		g_ipart = 0;
+		fl = 0;
+		return (ipart_to_str());
+	}
 	mant = (unsigned long long)*ptr;
 	if (data->precision == 0)
 		data->precision = 6;

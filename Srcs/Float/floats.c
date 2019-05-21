@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:49 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/20 16:04:52 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 18:48:50 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,46 +69,50 @@ void				get_mant_plus_pow(unsigned long mant, short exp, short sign)
 		other_case_double(arr, exp, sign);
 }
 
-void				get_mes(double flo)
+void				get_mes(void)
 {
 	unsigned long long	*ptr;
 	short				sign;
 	short				exp;
 	unsigned long long	mant;
 
-	ptr = (unsigned long long *)&flo;
+	ptr = (unsigned long long *)&g_flo;
 	sign = (*ptr) >> 63;
 	exp = ((*ptr) >> 52) - 1023;
 	exp <<= 5;
 	exp >>= 5;
+	if (exp == -1022)
+	{
+		g_ipart = 0;
+		g_flo = 0;
+		return (ipart_to_str());
+	}
 	mant = (*ptr) << 12 >> 12;
 	get_mant_plus_pow(mant, exp, sign);
 }
 
 void				ft_floats(t_pf *data, va_list args)
 {
-	double			flo;
-
 	if (!CHECK_BIT(data->modificators, 0))
 	{
-		flo = (double)va_arg(args, double);
-		g_ipart = (long)flo;
-		g_fpart = flo - g_ipart;
+		g_flo = (double)va_arg(args, double);
+		g_ipart = (long)g_flo;
+		g_fpart = g_flo - g_ipart;
 		if (data->precision == 0)
 			data->precision = 6;
-		if (g_fpart != 0 && flo != 1.0 / 0.0 && flo != -1.0 / 0.0 && flo == flo)
-			get_mes(flo);
-		else if (flo != 1.0 / 0.0 && flo != -1.0 / 0.0 && flo == flo)
+		if (g_fpart != 0 && g_flo != 1.0 / 0.0 && g_flo != -1.0 / 0.0 && g_flo == g_flo)
+			get_mes();
+		else if (g_flo != 1.0 / 0.0 && g_flo != -1.0 / 0.0 && g_flo == g_flo)
 			ipart_to_str();
 		else
-			validity(flo);
+			validity(data);
 		if (g_buffer->str[0] == '-')
 			DEL_BIT(data->flags, 3);
 	}
 	else
 		long_double_work(data, args);
-	set_plus_flo(data);
 	set_precision_flo(data);
+	set_plus_flo(data);
 	set_space_flo(data);
 	set_indents_flo(data);
 	ft_put_color(data);

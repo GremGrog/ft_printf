@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:02:49 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/20 18:08:33 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 18:10:08 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void					ft_put_indents_integer(t_pf *data);
 
 long					g_ipart;
 double					g_fpart;
+double					g_flo;
 void					ft_floats(t_pf *data, va_list args);
 void					set_indents_flo(t_pf *data);
 void					multiplication_on_short(char *src, int num, char *dst);
@@ -107,14 +108,14 @@ void					multiplication_loop(int j, char *x, char *y, char *z);
 void					multiplication_long(char *x, char *y, char *z);
 void					long_arithmetic_div_d(char *z, int n, char *y);
 void					set_arr_to_null(char *arr, int size);
-void					get_mes(double flo);
+void					get_mes(void);
 void					other_case_double(char *y, short exp, short sign);
 void					set_precision_flo(t_pf *data);
 void					set_space_flo(t_pf *data);
 void					set_plus_flo(t_pf *data);
 void					ipart_to_str(void);
 void					long_double_work(t_pf *data, va_list args);
-void					validity(double flo);
+void					validity(t_pf *data);
 void					ft_copy_float(char *x, short sign);
 void					get_ipart(void);
 char					*get_two_power(int power, char *pow, char *bow);

@@ -13,18 +13,17 @@ SRCF = Srcs/HighestFunctions/*.c \
 		Srcs/Float/*.c \
 		libft/ft_*.c
 
-OBJF = obj/*.o
+OBJF = $(SRCF: %.c=%.o ($wildcard *.c))
 
 INCLUDE = -I MainHeader/ft_printf.h -I libft/libft.h
 
 all: $(NAME)
 
-$(NAME):
-	gcc -g $(FLAGS) -c $(SRCF) $(INCLUDE)
-	mkdir obj
-	mv *.o obj
-	ar rc $(NAME) $(OBJF)
+$(NAME): $(OBJF)
+	gcc -g -c $(SRCF) $(INCLUDE)
+	ar rc $(NAME) *.o
 	ranlib $(NAME)
+	gcc $(NAME)
 
 clean:
 	/bin/rm -rf obj/*

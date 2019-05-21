@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:50:44 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 17:50:44 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 16:20:56 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,14 @@ void				ft_itoa_base_ox(t_pf *data, long long int num)
 	else
 	{
 		if (num < 0)
-			num += MAX_LONG_INT;
+		{
+			if (CHECK_BIT(data->modificators, 3))
+				num = MAX_UNSIGNED_CHAR;
+			else if (CHECK_BIT(data->modificators, 4))
+				num = MAX_UNSIGNED_SHORT_INT;
+			else
+				num += MAX_LONG_INT;
+		}
 	}
 	working_ox(data, num);
 	ft_strrev();

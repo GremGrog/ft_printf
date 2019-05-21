@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:36:02 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/20 16:16:16 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 18:18:42 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void				other_case_double(char *y, short exp, short sign)
 	bow = (char *)malloc(sizeof(char) * 399);
 	if (!x || !z || !pow || !bow)
 		return (check_and_free(&x, &z, &pow, &bow));
-	set_arrays_to_null(x, y, 399);
+	set_arr_to_null(x, 399);
 	set_arrays_to_null(pow, bow, 399);
 	pow = get_two_power(n, pow, bow);
 	multiplication_long(y, pow, x);
@@ -48,21 +48,35 @@ void				other_case_double(char *y, short exp, short sign)
 	ft_copy_float(x, sign);
 }
 
-void				validity(double flo)
+void				validity(t_pf *data)
 {
-	if (flo == 1.0 / 0.0)
+	if (g_flo == 1.0 / 0.0)
 	{
-		ft_strcpy(g_buffer->str, "inf");
-		g_buffer->str_len = 3;
+		if (CHECK_BIT(data->flags, 4))
+		{
+			ft_strcpy(g_buffer->str, "+inf");
+			g_buffer->str_len = 4;
+		}
+		else
+		{
+			ft_strcpy(g_buffer->str, "inf");
+			g_buffer->str_len = 3;
+		}
 	}
-	else if (flo == -1.0 / 0.0)
+	else if (g_flo == -1.0 / 0.0)
 	{
 		ft_strcpy(g_buffer->str, "-inf");
 		g_buffer->str_len = 4;
 	}
-	else if (flo != flo)
+	else if (g_flo!= g_flo)
 	{
 		ft_strcpy(g_buffer->str, "nan");
+		DEL_BIT(data->flags, 3);
 		g_buffer->str_len = 3;
 	}
+	data->indents_symb = ' ';
+	DEL_BIT(data->flags, 1);
+	DEL_BIT(data->flags, 2);
+	DEL_BIT(data->flags, 4);
+
 }

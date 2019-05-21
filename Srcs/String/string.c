@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:53:23 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/17 17:53:23 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/21 17:57:10 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,10 @@ void		string_process(t_pf *data, va_list args)
 	buf = va_arg(args, char*);
 	if (buf != NULL)
 	{
+		g_buffer->str_len = ft_strlen(buf);
+		check_and_add(g_buffer->str_len);
 		ft_strcpy(g_buffer->str, buf);
-		g_buffer->str_len = ft_strlen(g_buffer->str);
+
 	}
 	else
 	{
