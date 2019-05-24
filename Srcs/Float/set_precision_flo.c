@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:42 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/24 20:59:50 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/24 22:26:08 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,15 @@ void		add_one(t_pf *data, int i, int j)
 	while (i > 0)
 	{
 		if (g_buffer->str[i] == '9')
-		{
 			if (g_buffer->final[j] != '9')
 				g_buffer->final[j]++;
 			else
 			{
 				g_buffer->final[j] = '0';
-				if (g_buffer->final[j - 1] != '9')
-					g_buffer->final[j - 1]++;
-				else
-					g_buffer->final[j - 1] = '0';
+				g_buffer->final[j - 1] == '9' ? g_buffer->final[j - 1] = '0'
+						: g_buffer->final[j - 1]++;
 				j--;
 			}
-		}
 		else if (g_buffer->str[i + 1] == '9')
 		{
 			if (g_buffer->final[j - 1] != '9')
@@ -237,9 +233,6 @@ void		round_up_flo(t_pf *data)
 
 void		set_precision_flo(t_pf *data)
 {
-	int		i;
-	int		j;
-
 	if (g_fpart == 1.0 / 0.0 || g_fpart == -1.0 / 0.0 ||
 		g_fpart != g_fpart || data->precision == 0)
 		return ;

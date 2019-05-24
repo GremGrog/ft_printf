@@ -20,7 +20,7 @@ INCLUDE = -I MainHeader/ft_printf.h -I libft/libft.h
 all: $(NAME)
 
 $(NAME): $(OBJF)
-	gcc -g -c $(SRCF) $(INCLUDE)
+	gcc -g $(FLAGS) -c $(SRCF) $(INCLUDE)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 	gcc $(NAME)
