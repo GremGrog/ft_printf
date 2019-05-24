@@ -19,5 +19,7 @@ int	set_indents(t_pf *data, const char *format, int i)
 		data->indents = data->indents * 10 + format[i] - '0';
 		i++;
 	}
+	if (data->indents * 10 / 10 != data->indents)
+		data->indents = 0;
 	return (i);
 }

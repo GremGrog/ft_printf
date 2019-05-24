@@ -6,13 +6,13 @@
 /*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:00:45 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/17 18:00:46 by qmebble          ###   ########.fr       */
+/*   Updated: 2019/05/24 13:11:18 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../MainHeader/ft_printf.h"
 
-int		num_len_integer(long long int num)
+int		num_len_integer(__int128 num)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:01:02 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/17 18:01:04 by qmebble          ###   ########.fr       */
+/*   Updated: 2019/05/24 21:20:11 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,18 @@ void		ft_print_zero(t_pf *data)
 		write(1, data->str_before, g_buffer->before_len);
 		free(data->str_before);
 	}
-	if (g_buffer->str)
+	if (g_buffer->str && CHECK_BIT(data->flags, 5))
+	{
+		write(1, &sym, 1);
 		write(1, g_buffer->str, g_buffer->str_len);
-	write(1, &sym, 1);
+	}
+	else if (g_buffer->str && !CHECK_BIT(data->flags, 5))
+	{
+		write(1, g_buffer->str, g_buffer->str_len);
+		write(1, &sym, 1);
+	}
+	else
+		write(1, &sym, 1);
 	if (data->str_after)
 	{
 		write(1, data->str_after, g_buffer->after_len);

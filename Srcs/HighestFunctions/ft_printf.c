@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:01:11 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/21 20:10:15 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/24 21:20:49 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_printf(const char *format, ...)
 	t_pf	*data;
 	int		return_value;
 
-	if (!format)
+ 	if (!format)
 		return (-1);
 	i = 0;
 	return_value = 0;
@@ -40,18 +40,15 @@ int			ft_printf(const char *format, ...)
 
 int main()
 {
-//	printf("S%.5lld|%-.5lld|%+.5lld|% .5lld|%0.5lld\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
-//	ft_printf("O%.5lld|%-.5lld|%+.5lld|% .5lld|%0.5lld\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
-//	printf("S%1.5lld|%-1.5lld|%+1.5lld|% 1.5lld|%01.5lld\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
-//	ft_printf("O%1.5lld|%-1.5lld|%+1.5lld|% 1.5ld|%01.5lld\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
-//
-//	printf("%.5f|%.12f\n", 61.000099, 61.000099);
-	ft_printf("%.12f", 61.000099);
-//	printf("%5f|%-5f|%+5f|% 5f|%#5f|%05f\n", 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0);
-//	ft_printf("%5f|%-5f|%+5f|% 5f|%#5f|%05f\n", 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0);
-//	printf("%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0);
-//	ft_printf("%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0);
-//	printf("%.8f|%-.8f|%+.8f|% .8f|%#.8f|%0.8f\n", 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0);
-//	ft_printf("%.8f|%-.8f|%+.8f|% .8f|%#.8f|%0.8f\n", 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0, 1.0/0.0);
+	ft_printf("%c|%-c|%12c|%-12c", 0, 0, 0, 0);
+//	printf("%c|%-c|%12c|%-12c", 0, 0, 0, 0);
+//	printf("%.2147483649f|%2147483649f", 1.0, 1.0);
+//	printf("%.f\n", 45.5);
+//	ft_printf("%.f\n", 44.5);
+//	printf("%.f\n", 44.5);
+//	float		nb;
+//	nb = 12.5;
+//	ft_printf("null prec : %+.0f\n", nb);
+//	dprintf(2, "null prec : %+.0f\n", nb);
 
 }
