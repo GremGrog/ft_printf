@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:21 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/21 18:35:33 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/25 15:32:36 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ void				get_longdouble(unsigned long long m, short exp, short sign)
 
 	if (63 - exp > 0)
 	{
-		arr = (char *)malloc(sizeof(char) * 399);
-		pow = (char *)malloc(sizeof(char) * 399);
-		bow = (char *)malloc(sizeof(char) * 399);
-		z = (char *)malloc(sizeof(char) * 399);
+		arr = (char *)malloc(sizeof(char) * 4999);
+		pow = (char *)malloc(sizeof(char) * 4999);
+		bow = (char *)malloc(sizeof(char) * 4999);
+		z = (char *)malloc(sizeof(char) * 4999);
 		if (!arr || !pow || !bow || !z)
 			return (check_and_free(&arr, &pow, &bow, &z));
-		set_arrays_to_null(pow, bow, 399);
-		set_arrays_to_null(z, arr, 399);
+		set_arrays_to_null(pow, bow, 4999);
+		set_arrays_to_null(z, arr, 4999);
 		pow = get_five_power(63, exp, pow, bow);
 		number_to_arr(m, arr);
 		multiplication_long(arr, pow, z);
@@ -97,15 +97,13 @@ void				get_longdouble(unsigned long long m, short exp, short sign)
 		get_longdouble_other(m, exp, sign);
 }
 
-void				long_double_work(t_pf *data, va_list args)
+void				get_ld_mes(long double fl)
 {
-	long double			fl;
 	__int128			*ptr;
 	short				sign;
 	short				exp;
 	unsigned long long	mant;
 
-	fl = (long double)va_arg(args, long double);
 	ptr = (__int128 *)&fl;
 	sign = (*ptr) >> 79;
 	if (sign == 1)
@@ -119,10 +117,18 @@ void				long_double_work(t_pf *data, va_list args)
 		return (ipart_to_str());
 	}
 	mant = (unsigned long long)*ptr;
+	get_longdouble(mant, exp, sign);
+}
+
+void				long_double_work(t_pf *data, va_list args)
+{
+	long double			fl;
+
+	fl = (long double)va_arg(args, long double);
 	if (data->precision == 0)
 		data->precision = 6;
 	if (fl != 0 && fl != 1.0 / 0.0 && fl != -1.0 / 0.0 && fl == fl)
-		get_longdouble(mant, exp, sign);
+		get_ld_mes(fl);
 	else if (fl != 1.0 / 0.0 && fl != -1.0 / 0.0 && fl == fl)
 		ipart_to_str();
 	if (g_buffer->str[0] == '-')

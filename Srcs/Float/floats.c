@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:35:49 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/24 12:31:25 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/25 16:07:27 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void				get_mes(void)
 	exp = ((*ptr) >> 52) - 1023;
 	exp <<= 5;
 	exp >>= 5;
-	if (exp == -1022)
+	if (exp == -1022 || exp <= -1023)
 	{
 		g_ipart = 0;
 		g_flo = 0;
@@ -100,7 +100,8 @@ void				ft_floats(t_pf *data, va_list args)
 		g_fpart = g_flo - g_ipart;
 		if (data->precision == 0)
 			data->precision = 6;
-		if (g_fpart != 0 && g_flo != 1.0 / 0.0 && g_flo != -1.0 / 0.0 && g_flo == g_flo)
+		if (g_fpart != 0 && g_flo != 1.0 / 0.0 &&
+		g_flo != -1.0 / 0.0 && g_flo == g_flo)
 			get_mes();
 		else if (g_flo != 1.0 / 0.0 && g_flo != -1.0 / 0.0 && g_flo == g_flo)
 			ipart_to_str();

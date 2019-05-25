@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:19:05 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/24 12:45:41 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/25 15:38:16 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void					copy_long_double(char *z, int n, short sign)
 	int					j;
 	int					o;
 
-	o = 398;
+	o = 4998;
 	i = -1;
 	j = 0;
 	while (z[++i] == 0)
@@ -80,7 +80,7 @@ void					copy_long_double(char *z, int n, short sign)
 	while (z[o] == 0)
 		o--;
 	check_and_add(g_buffer->str_len + (o - i));
-	while (n-- > 0 && i < 399)
+	while (n-- > 0 && i < 4998)
 	{
 		g_buffer->str[j++] = z[i++] + '0';
 		if (n == 0)

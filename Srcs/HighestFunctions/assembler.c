@@ -6,17 +6,14 @@
 /*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:01:02 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/24 21:20:11 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:30:41 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../MainHeader/ft_printf.h"
 
-void		ft_print_zero(t_pf *data)
+void		ft_print_zero(t_pf *data, char sym)
 {
-	char	sym;
-
-	sym = 0;
 	data->return_value = g_buffer->str_len + g_buffer->before_len +
 			g_buffer->after_len + 1;
 	if (data->str_before)
@@ -45,9 +42,12 @@ void		ft_print_zero(t_pf *data)
 
 t_pf		*assemble_string(t_pf *data)
 {
+	char	sym;
+
+	sym = 0;
 	if (data->type == '0')
 	{
-		ft_print_zero(data);
+		ft_print_zero(data, sym);
 		return (data);
 	}
 	ft_put_str(data);

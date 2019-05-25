@@ -20,19 +20,16 @@ INCLUDE = -I MainHeader/ft_printf.h -I libft/libft.h
 all: $(NAME)
 
 $(NAME): $(OBJF)
-	gcc -g $(FLAGS) -c $(SRCF) $(INCLUDE)
+	gcc $(FLAGS) -c $(SRCF) $(INCLUDE)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
-	gcc $(NAME)
 
 clean:
-	/bin/rm -rf obj/*
 	/bin/rm -f libft/*.o
+	/bin/rm -f *.o
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	/bin/rm -rf obj
-	/bin/rm -f a.out
 	/bin/rm -f libft/libft.a
 
 re: fclean all

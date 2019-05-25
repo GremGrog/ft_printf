@@ -86,7 +86,6 @@ void		string_process(t_pf *data, va_list args)
 		g_buffer->str_len = ft_strlen(buf);
 		check_and_add(g_buffer->str_len);
 		ft_strcpy(g_buffer->str, buf);
-
 	}
 	else
 	{

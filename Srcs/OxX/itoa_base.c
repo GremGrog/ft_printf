@@ -54,13 +54,10 @@ void				ft_itoa_base_ox(t_pf *data, long long int num)
 	{
 		if (num < 0 && CHECK_BIT(data->modificators, 3))
 			num += 256;
-		if (num < 0 && CHECK_BIT(data->modificators, 4))
+		else if (num < 0 && CHECK_BIT(data->modificators, 4))
 			num += MAX_UNSIGNED_SHORT_INT + 1;
-		else
-		{
-			if (num < 0)
-				num += MAX_LONG_INT;
-		}
+		else if (num < 0)
+			num += MAX_LONG_INT;
 	}
 	else
 	{

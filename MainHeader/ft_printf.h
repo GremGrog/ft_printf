@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:02:49 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/21 18:10:08 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:07:40 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,10 @@ void					set_arrays_to_null(char *a, char *b, int n);
 void					check_and_free(char **a, char **b, char **c, char **d);
 void					copy_long_double_other(char *x, short sign);
 void					copy_long_double(char *z, int n, short sign);
+void					fill_zero(t_pf *data);
+void					round_up_nine(t_pf *data);
+void					copy_flo(t_pf *data);
+void					round_ipart(t_pf *data);
 /*
 **						HighestFunctions
 */
