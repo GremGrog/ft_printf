@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:14:04 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 19:52:03 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/03 18:51:40 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/24 19:04:32 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	char	*a;
+	size_t			len;
+	char			*str;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (!s1 || !s2)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	while (s2[j])
-		j++;
-	a = (char *)malloc(sizeof(char) * (i + j + 1));
-	if (!a)
-		return (NULL);
-	i = -1;
-	j = -1;
-	while (s1[++i])
-		a[i] = s1[i];
-	while (s2[++j])
-		a[i + j] = s2[j];
-	a[i + j] = '\0';
-	return (a);
+	if (s1 && s2)
+	{
+		len = ft_strlen(s1) + ft_strlen(s2);
+		i = 0;
+		j = 0;
+		str = (char*)malloc(sizeof(char) * len + 1);
+		if (str == 0)
+			return (NULL);
+		while (s1[i] != '\0')
+		{
+			str[i] = s1[i];
+			i++;
+		}
+		while (s2[j] != '\0')
+			str[i++] = s2[j++];
+		str[i] = '\0';
+		return (str);
+	}
+	return (NULL);
 }

@@ -2,34 +2,56 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCF = Srcs/HighestFunctions/*.c \
-		Srcs/HighestFunctions/Parsing/*.c \
-		Srcs/Char/*.c \
-		Srcs/String/*.c \
-		Srcs/Pointer/*.c \
-		Srcs/OxX/*.c \
-		Srcs/DI/*.c \
-		Srcs/Unsigned/*.c \
-		Srcs/Float/*.c \
-		libft/ft_*.c
+DIR_S = Srcs
 
-OBJF = $(SRCF: %.c=%.o ($wildcard *.c))
+DIR_O = obj
 
-INCLUDE = -I MainHeader/ft_printf.h -I libft/libft.h
+SRCF := HighestFunctions/*.c \
+		HighestFunctions/Parsing/*.c \
+		Char/*.c \
+		String/*.c \
+		Pointer/*.c \
+		OxX/*.c \
+		DI/*.c \
+		Unsigned/*.c \
+		Float/*.c
+
+SRCS = $(addprefix $(DIR_S)/,$(SRCF))
+
+OBJF = $(addprefix $(DIR_O)/,$(SRCF:.c=.o))
+
+INCLUDE = MainHeader
 
 all: $(NAME)
 
-$(NAME): $(OBJF)
-	gcc $(FLAGS) -c $(SRCF) $(INCLUDE)
-	ar rc $(NAME) *.o
+$(NAME): $(DIR_O) $(OBJF)
+	@make -C libft
+	@cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJF)
 	ranlib $(NAME)
 
+$(DIR_O):
+	@mkdir -p obj
+	@mkdir -p obj/HighestFunctions
+	@mkdir -p obj/HighestFunctions/Parsing
+	@mkdir -p obj/Char
+	@mkdir -p obj/String
+	@mkdir -p obj/Pointer
+	@mkdir -p obj/OxX
+	@mkdir -p obj/DI
+	@mkdir -p obj/Unsigned
+	@mkdir -p obj/Float
+
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	@gcc $(FLAGS) -I $(INCLUDE) -o $@ -c $<
+
 clean:
-	/bin/rm -f libft/*.o
-	/bin/rm -f *.o
+	@/bin/rm -f $(OBJF)
+	@/bin/rm -rf $(DIR_O)
+	@make clean -C libft
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	/bin/rm -f libft/libft.a
+	@/bin/rm -f $(NAME)
+	@make fclean -C libft
 
 re: fclean all

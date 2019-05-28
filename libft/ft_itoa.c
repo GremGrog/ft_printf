@@ -3,44 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:56:20 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 19:02:40 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/10 18:24:09 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/26 20:04:52 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_getlen(int n)
+static char	*ft_strrev(char *s)
 {
-	size_t		i;
+	unsigned int	i;
+	unsigned int	j;
+	char			*str;
 
-	i = 1;
-	while (n /= 10)
-		i++;
-	return (i);
+	i = 0;
+	j = ft_strlen(s) - 1;
+	str = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (str == 0)
+		return (NULL);
+	if (s[0] == '-')
+		str[i++] = s[0];
+	while (i < ft_strlen(s))
+		str[i++] = s[j--];
+	str[i] = '\0';
+	return (str);
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char			*str;
-	size_t			len;
-	unsigned int	temp;
+	int				i;
+	unsigned int	d;
 
-	len = ft_getlen(n);
-	temp = n;
+	i = 0;
+	d = (unsigned int)n;
+	str = (char*)malloc(sizeof(char) * 128);
+	if (str == 0)
+		return (NULL);
 	if (n < 0)
 	{
-		temp = -n;
-		len++;
+		d = n * (-1);
+		str[i++] = '-';
 	}
-	if (!(str = ft_strnew(len)))
-		return (NULL);
-	str[--len] = temp % 10 + '0';
-	while (temp /= 10)
-		str[--len] = temp % 10 + '0';
-	if (n < 0)
-		str[0] = '-';
-	return (str);
+	if (d == 0)
+		str[i++] = '0';
+	while (d > 0)
+	{
+		str[i++] = d % 10 + '0';
+		d /= 10;
+	}
+	str[i] = '\0';
+	return (ft_strrev(str));
 }

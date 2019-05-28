@@ -3,50 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 22:43:34 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 23:41:41 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/27 18:30:01 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/27 21:06:01 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	all_free(t_list **lst)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *space;
+	t_list	*new;
+	t_list	*begin;
 
-	while (lst)
-	{
-		space = (*lst)->next;
-		free(lst);
-		*lst = space;
-	}
-	(*lst) = NULL;
-}
-
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
-{
-	t_list	*nlist;
-	t_list	*slist;
-
-	if (!lst || !f)
+	if (lst == NULL || f == NULL)
 		return (NULL);
-	nlist = ft_lstnew(NULL, 0);
-	nlist = f(lst);
-	if (nlist == NULL)
-		return (NULL);
-	slist = nlist;
-	while (lst->next)
+	new = f(lst);
+	begin = new;
+	while (lst->next != NULL)
 	{
-		lst = lst->next;
-		nlist->next = f(lst);
-		if (nlist->next == NULL)
+		new->next = f(lst->next);
+		if (!new->next)
 		{
-			all_free(&slist);
+			free(new);
 			return (NULL);
 		}
-		nlist = nlist->next;
+		lst = lst->next;
+		new = new->next;
 	}
-	return (slist);
+	return (begin);
 }

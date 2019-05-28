@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 16:14:32 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 20:00:02 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/03 14:20:06 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/27 23:08:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	ft_strclr(char *s)
 {
-	int	i;
-	int	len;
+	unsigned int	i;
+	size_t			len;
 
-	if (!s)
-		return ;
-	i = -1;
-	len = 0;
-	while (s[++i])
-		len++;
-	i = -1;
-	while (++i < len)
-		s[i] = '\0';
+	if (s)
+	{
+		len = ft_strlen(s);
+		i = 0;
+		while (i < len)
+		{
+			s[i] = 0;
+			i++;
+		}
+	}
 }

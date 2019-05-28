@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 19:20:32 by qmebble           #+#    #+#             */
-/*   Updated: 2018/11/30 21:56:47 by qmebble          ###   ########.fr       */
+/*   Created: 2018/11/29 18:03:28 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/27 22:22:10 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	size_t	t;
+	unsigned int	i;
+	unsigned int	j;
 
-	i = -1;
+	i = 0;
 	j = 0;
-	if (s1 == s2)
-		return ((char *)s1);
-	if (s2[++i] == '\0')
-		return ((char *)s1);
-	i = -1;
-	while (s1[++i] && i < len)
+	if (ft_strlen(s1) == 0 && ft_strlen(s2) == 0)
+		return ((char*)&s1[i]);
+	while (i < len && s2[j] != '\0' && s1[i] != '\0')
 	{
-		t = i;
-		while (s2[j] == s1[i] && s1[i] && s2[j] && i < len)
-		{
-			i++;
+		if (s1[i] == s2[j])
 			j++;
+		else
+		{
+			i = i - j;
+			j = 0;
 		}
-		if (s2[j] == '\0')
-			return ((char *)(&s1[t]));
-		j = 0;
-		i = t;
+		i++;
 	}
-	return (NULL);
+	if (j == ft_strlen(s2))
+		return ((char*)&s1[i - j]);
+	else
+		return (NULL);
 }

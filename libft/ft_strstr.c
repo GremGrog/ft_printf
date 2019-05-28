@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 21:07:10 by qmebble           #+#    #+#             */
-/*   Updated: 2018/11/30 21:56:08 by qmebble          ###   ########.fr       */
+/*   Created: 2018/11/29 16:31:23 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/20 18:47:32 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 char	*ft_strstr(const char *s1, const char *s2)
 {
-	int		i;
-	int		j;
-	int		t;
+	int	i;
+	int f;
+	int j;
 
-	i = -1;
-	j = -1;
-	if (s1 == s2)
-		return ((char *)s1);
-	if (s2[++i] == '\0')
-		return ((char *)s1);
-	i = -1;
-	while (s1[++i])
+	i = 0;
+	f = 0;
+	j = 0;
+	if ((*s2 == '\0') || ((*s1 == '\0' && *s2 == '\0')))
+		return ((char*)s1);
+	while (s1[i] != '\0')
 	{
-		t = i;
-		while (s2[++j] == s1[i] && s2[j] != '\0' && s1[j] != '\0')
+		j = 0;
+		while (s1[i] == s2[j])
+		{
+			j++;
 			i++;
-		if (s2[j] == '\0')
-			return ((char *)(&s1[t]));
-		j = -1;
-		i = t;
+			if (s2[j] == '\0')
+				return ((char *)&s1[i - j]);
+		}
+		i = i - j;
+		i++;
 	}
-	return (NULL);
+	return (0);
 }

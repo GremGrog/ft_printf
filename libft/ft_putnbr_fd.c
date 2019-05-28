@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 22:36:12 by qmebble           #+#    #+#             */
-/*   Updated: 2018/11/29 22:42:13 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/10 21:26:35 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/20 22:00:47 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	nb;
-	char			c;
-
-	c = '-';
-	nb = n;
-	if (n < 0)
+	if (n == -2147483648)
 	{
-		ft_putchar_fd(c, fd);
-		nb = n * -1;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		ft_putnbr_fd(147483648, fd);
 	}
 	else
-		ft_putchar_fd(nb + '0', fd);
+	{
+		if (n < 0)
+		{
+			n *= -1;
+			ft_putchar_fd('-', fd);
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + 48, fd);
+	}
 }

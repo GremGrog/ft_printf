@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 22:28:50 by qmebble           #+#    #+#             */
-/*   Updated: 2018/11/28 23:07:52 by qmebble          ###   ########.fr       */
+/*   Created: 2018/11/27 15:11:36 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/11/27 16:17:52 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,29 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	size_t	i;
+	unsigned long	i;
 
 	i = 0;
-	while (i < len && src[i] != '\0')
+	if (ft_strlen(src) < len)
 	{
-		dst[i] = src[i];
-		i++;
+		while (i < ft_strlen(src))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		while (i < len)
+		{
+			dst[i] = 0;
+			i++;
+		}
 	}
-	while (i < len)
+	else
 	{
-		dst[i] = '\0';
-		i++;
+		while (i < len)
+		{
+			dst[i] = src[i];
+			i++;
+		}
 	}
 	return (dst);
 }

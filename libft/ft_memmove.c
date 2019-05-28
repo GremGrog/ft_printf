@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 23:24:27 by qmebble           #+#    #+#             */
-/*   Updated: 2018/11/30 21:59:24 by qmebble          ###   ########.fr       */
+/*   Created: 2018/11/26 17:51:01 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/27 20:59:48 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	unsigned long		i;
+	unsigned char		*dest;
+	unsigned const char	*sour;
 
-	str1 = (unsigned char *)dst;
-	str2 = (unsigned char *)src;
-	if (str1 == str2)
-		return ((void *)dst);
-	else if (str1 > str2)
+	if (!src && !dst)
+		return (NULL);
+	i = -1;
+	dest = (unsigned char*)dst;
+	sour = (unsigned const char*)src;
+	if (sour < dest)
 	{
-		i = len - 1;
-		while (len--)
+		i = len;
+		while (i > 0)
 		{
-			str1[i] = str2[i];
+			dest[i - 1] = sour[i - 1];
 			i--;
 		}
 	}
 	else
 	{
-		i = -1;
 		while (++i < len)
-			str1[i] = str2[i];
+			dest[i] = sour[i];
 	}
-	return ((void *)str1);
+	return (dest);
 }

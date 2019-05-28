@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: space <space@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 23:31:40 by qmebble           #+#    #+#             */
-/*   Updated: 2018/11/29 10:08:39 by space            ###   ########.fr       */
+/*   Created: 2018/11/26 18:13:59 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/11 12:59:38 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int				i;
-	unsigned char	ch;
-	unsigned char	*str;
+	unsigned char		*str;
+	unsigned long		l;
+	unsigned char		sym;
 
-	i = 0;
-	ch = (unsigned char)c;
+	l = 0;
+	sym = (unsigned char)c;
 	str = (unsigned char *)s;
-	while (n--)
+	while (l < n)
 	{
-		if (str[i] == ch)
-			return ((void *)&str[i]);
-		i++;
+		if (str[l] == sym)
+			return (&str[l]);
+		l++;
 	}
 	return (NULL);
 }

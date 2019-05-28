@@ -5,21 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/02 17:53:34 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/05/16 22:04:13 by fmasha-h         ###   ########.fr       */
+/*   Created: 2018/11/26 14:14:51 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/21 00:30:17 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	int i;
+	size_t l;
 
-	i = 0;
-	if (!s)
-		return (i);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	l = 0;
+	while (str[l] != '\0')
+		l++;
+	return (l);
 }

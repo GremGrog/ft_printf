@@ -3,58 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:18:45 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 19:50:17 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/03 18:59:36 by fmasha-h          #+#    #+#             */
+/*   Updated: 2018/12/26 20:08:14 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	len(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	int i;
-
-	i = 0;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	return (i);
-}
-
-static char	*prov(void)
-{
-	char	*str;
-
-	str = (char *)malloc(sizeof(char));
-	str[0] = '\0';
-	return (str);
-}
-
-char		*ft_strtrim(char const *s)
-{
-	char	*a;
-	int		i;
-	int		j;
-	int		start;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	k;
+	char			*str;
 
 	if (!s)
 		return (NULL);
-	i = len(s);
-	j = ft_strlen(s);
-	if (j == i)
-		return (prov());
-	while (s[j] == '\t' || s[j] == '\n' || s[j] == ' ' || s[j] == '\0')
-		j--;
-	if (!(a = (char *)malloc(sizeof(char) * (j - i + 2))))
-		return (NULL);
-	start = 0;
-	while (i <= j)
+	i = 0;
+	k = 0;
+	if (*s != '\0')
 	{
-		a[start] = s[i];
-		start++;
-		i++;
+		j = ft_strlen(s) - 1;
+		while ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t') && (s[i] != '\0'))
+			i++;
+		while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && (j != 0))
+			j--;
+		if (!(str = (char*)malloc(sizeof(char) * (j - i) + 2)))
+			return (NULL);
+		while (i <= j && s[i] != '\0')
+			str[k++] = s[i++];
 	}
-	a[start] = '\0';
-	return (a);
+	else
+		str = (char*)malloc(sizeof(char) + 1);
+	str[k] = '\0';
+	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 16:32:53 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 19:54:18 by qmebble          ###   ########.fr       */
+/*   Created: 2018/12/03 16:26:35 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/01/10 14:31:05 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char	*a;
-	int		len;
+	char			*str;
+	unsigned int	i;
 
-	if (!s)
-		return (NULL);
-	len = 0;
-	while (s[len])
-		len++;
-	a = (char *)malloc(sizeof(char) * (len + 1));
-	if (!a)
-		return (NULL);
-	len = 0;
-	while (s[len])
+	if (s != NULL && f != NULL)
 	{
-		a[len] = f(s[len]);
-		len++;
+		i = 0;
+		str = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
+		if (str == 0)
+			return (NULL);
+		while (s[i] != '\0')
+		{
+			str[i] = f(s[i]);
+			i++;
+		}
+		str[i] = '\0';
+		return (str);
 	}
-	a[len] = '\0';
-	return (a);
+	return (NULL);
 }

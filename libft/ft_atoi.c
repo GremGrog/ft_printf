@@ -3,50 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 20:17:30 by qmebble           #+#    #+#             */
-/*   Updated: 2018/12/04 17:29:18 by qmebble          ###   ########.fr       */
+/*   Created: 2018/11/30 13:10:44 by fmasha-h          #+#    #+#             */
+/*   Updated: 2019/05/28 18:49:11 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	prov(const char *str, int i, int flag)
+int	ft_atoi(const char *str)
 {
-	unsigned long long n;
+	int			sign;
+	long int	res;
+	int			i;
 
-	n = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		n *= 10;
-		n += str[i] - '0';
-		if (n > 9223372036854775807)
-		{
-			if (flag == -1)
-				return (0);
-			return (-1);
-		}
-		i++;
-	}
-	return (n * flag);
-}
-
-int			ft_atoi(const char *str)
-{
-	int					i;
-	int					flag;
-
+	sign = 1;
+	res = 0;
 	i = 0;
-	flag = 1;
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' || str[i] == '\r'
-		|| str[i] == '\f' || str[i] == ' ')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+		str[i] == '\f' || str[i] == '\r' || str[i] == '\v')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-' && str[i + 1] >= 48 && str[i + 1] <= 57)
 	{
-		if (str[i] == '-')
-			flag = -1;
+		sign = -1;
 		i++;
 	}
-	return (prov(str, i, flag));
+	if (str[i] == '+' && str[i + 1] >= 48 && str[i + 1] <= 57)
+		i++;
+	while (str[i] >= 48 && str[i] <= 57)
+		res = res * 10 + str[i++] - '0';
+	if ((res != (res * 10) / 10) && (sign > 0))
+		return (-1);
+	if ((res != (res * 10) / 10) && (sign < 0))
+		return (0);
+	return (sign * res);
 }
