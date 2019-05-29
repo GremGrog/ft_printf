@@ -36,3 +36,8 @@ int			ft_printf(const char *format, ...)
 	va_end(args);
 	return (return_value);
 }
+
+int main()
+{
+	return 0;
+}
